@@ -1,0 +1,23 @@
+{
+  "name": "rn-numberpicker-android",
+  "version": "1.0.0",
+  "description": "Number picker for Android",
+  "main": "js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "picker",
+    "select",
+    "number picker",
+    "wheel picker"
+  ],
+  "peerDependencies": {
+    "react": "^16.0",
+    "react-native": ">=0.57 <=0.63"
+  },
+  "private": true,
+  "author": "E2Time.com",
+  "license": "MIT"
+}
