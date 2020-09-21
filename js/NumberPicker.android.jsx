@@ -17,11 +17,16 @@ NumberPicker.defaultProps = {
 };
 
 function NumberPicker(props) {
+
+  const _onChange = event => {
+    props.onChange(props.items?.[parseInt(event?.nativeEvent?.value)])
+  }
+
   return (
     <RCTNumberPickerView
       items={props.items}
-      selectedItem={props.selectedItem}
-      onChange={event => props.onChange(parseInt(event?.nativeEvent?.value))}
+      selectedItem={props.items.indexOf(props.selectedItem)}
+      onChange={_onChange}
       style={props.style}
     />
   );
