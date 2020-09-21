@@ -87,6 +87,20 @@ public class RNNumberPickerViewManager extends SimpleViewManager<FrameLayout> {
         numberPicker.setValue(selectedItem);
     }
 
+    @ReactProp(name = "textColor")
+    public void setTextColor(FrameLayout frameLayout, String textColor) {
+        NumberPicker numberPicker = frameLayout.findViewWithTag("numberPicker");
+
+        numberPicker.setTextColor(Color.parseColor(textColor));
+    }
+
+    @ReactProp(name = "fontSize")
+    public void setFontSize(FrameLayout frameLayout, float fontSize) {
+        NumberPicker numberPicker = frameLayout.findViewWithTag("numberPicker");
+
+        numberPicker.setTextSize(fontSize);
+    }
+
     @Override
     public @Nullable
     Map<String, Object> getExportedCustomBubblingEventTypeConstants() {
