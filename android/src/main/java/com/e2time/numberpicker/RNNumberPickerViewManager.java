@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
+import android.graphics.Color;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -69,11 +70,35 @@ public class RNNumberPickerViewManager extends SimpleViewManager<FrameLayout> {
     public void setItems(FrameLayout frameLayout, @Nullable ReadableArray items) {
         NumberPicker numberPicker = frameLayout.findViewWithTag("numberPicker");
         assert items != null;
-        Object[] mItems = items.toArrayList().toArray();
-        String[] itms = Arrays.copyOf(mItems, mItems.length, String[].class);
+
+        String[] displayValues = new String[items.size()];
+        for (int i = 0; i < items.size(); i++) {
+            displayValues[i] = (String) items.getString(i);
+        }
+
         numberPicker.setMinValue(0);
-        numberPicker.setMaxValue(itms.length - 1);
-        numberPicker.setDisplayedValues(itms);
+        numberPicker.setMaxValue(displayValues.length > 0 ? displayValues.length - 1 : 0);
+        numberPicker.setDisplayedValues(displayValues.length > 0 ? displayValues : null);
+    }
+
+    @ReactProp(name = "selectedItem")
+    public void setValue(FrameLayout frameLayout, Integer selectedItem) {
+        NumberPicker numberPicker = frameLayout.findViewWithTag("numberPicker");
+        numberPicker.setValue(selectedItem);
+    }
+
+    @ReactProp(name = "textColor")
+    public void setTextColor(FrameLayout frameLayout, String textColor) {
+        NumberPicker numberPicker = frameLayout.findViewWithTag("numberPicker");
+
+        numberPicker.setTextColor(Color.parseColor(textColor));
+    }
+
+    @ReactProp(name = "fontSize")
+    public void setFontSize(FrameLayout frameLayout, float fontSize) {
+        NumberPicker numberPicker = frameLayout.findViewWithTag("numberPicker");
+
+        numberPicker.setTextSize(fontSize);
     }
 
     @Override
