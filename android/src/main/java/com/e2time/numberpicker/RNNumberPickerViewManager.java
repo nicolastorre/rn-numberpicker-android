@@ -77,8 +77,8 @@ public class RNNumberPickerViewManager extends SimpleViewManager<FrameLayout> {
         }
 
         numberPicker.setMinValue(0);
-        numberPicker.setMaxValue(displayValues.length - 1);
-        numberPicker.setDisplayedValues(displayValues);
+        numberPicker.setMaxValue(displayValues.length > 0 ? displayValues.length - 1 : 0);
+        numberPicker.setDisplayedValues(displayValues.length > 0 ? displayValues : null);
     }
 
     @ReactProp(name = "selectedItem")
