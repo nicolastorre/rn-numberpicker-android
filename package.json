@@ -2,7 +2,7 @@
   "name": "rn-numberpicker-android",
   "version": "1.0.1",
   "description": "Number picker for Android",
-  "main": "js/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
