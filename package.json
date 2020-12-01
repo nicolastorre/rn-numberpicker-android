@@ -18,6 +18,6 @@
     "react-native": ">=0.57 <=0.63"
   },
   "private": true,
-  "author": "E2Time.com",
+  "author": "Merlier",
   "license": "MIT"
 }

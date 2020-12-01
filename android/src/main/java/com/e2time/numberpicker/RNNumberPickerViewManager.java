@@ -1,4 +1,4 @@
-package com.e2time.numberpicker;
+package com.merlier.numberpicker;
 
 import java.util.Arrays;
 import java.util.Map;
