@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd .. || exit 1
+cd /github/workspace/example || exit 1
 
 ls . -all
 npm i -g envinfo detox-cli && envinfo
