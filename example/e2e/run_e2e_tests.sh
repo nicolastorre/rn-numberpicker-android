@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd .. || exit 1
+
 npm i -g envinfo detox-cli && envinfo
 npm install
 
@@ -13,5 +15,3 @@ npx jetify
 npx detox build -c android.emu.release
 npx detox test -c android.emu.release --artifacts-location="e2e/__screenshots__" --take-screenshots="all" --headless
 # --updateSnapshot
-
-exit 0
