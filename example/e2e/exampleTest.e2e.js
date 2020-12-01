@@ -16,7 +16,7 @@ describe('Example', () => {
   });
 
   it('should have example screen', async () => {
-    await expect(element(by.id('example'))).toBeVisible();
+    await expect(element(by.id('example_error'))).toBeVisible();
   });
 
   it('should have numberpicker', async () => {
