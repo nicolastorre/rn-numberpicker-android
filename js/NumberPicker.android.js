@@ -8,7 +8,7 @@ NumberPicker.propTypes = {
   onChange: PropTypes.func,
   textColor: PropTypes.string,
   fontSize: PropTypes.number,
-  style: ViewPropTypes.style
+  style: ViewPropTypes.style,
 };
 
 NumberPicker.defaultProps = {
@@ -17,10 +17,9 @@ NumberPicker.defaultProps = {
 };
 
 function NumberPicker(props) {
-
-  const _onChange = event => {
-    props.onChange(props.items?.[parseInt(event?.nativeEvent?.value)])
-  }
+  const _onChange = (event) => {
+    props.onChange(props.items?.[parseInt(event?.nativeEvent?.value, 10)]);
+  };
 
   return (
     <RCTNumberPickerView

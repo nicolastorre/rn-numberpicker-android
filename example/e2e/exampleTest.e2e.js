@@ -2,7 +2,7 @@ import screenshot from 'detox-take-screenshot';
 import jestExpect from 'expect';
 import {setupJestScreenshot} from 'jest-screenshot';
 
-const {device, expect, element, by, waitFor} = require('detox'); // eslint-disable-line no-unused-vars
+const {device, expect, element, by, waitFor} = require('detox');
 
 global.device = device;
 global.element = element;
@@ -21,10 +21,9 @@ describe('Example', () => {
 
   it('should have numberpicker', async () => {
     await waitFor(element(by.id('example')))
-        .toBeVisible()
-        .withTimeout(2000);
+      .toBeVisible()
+      .withTimeout(2000);
 
     jestExpect(await screenshot()).toMatchImageSnapshot();
   });
-
 });

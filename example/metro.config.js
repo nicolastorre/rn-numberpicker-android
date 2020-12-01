@@ -17,7 +17,7 @@ function getModuleMappings() {
   let moduleMappings = {};
 
   function findPackageDirs(directory) {
-    fs.readdirSync(directory).forEach(item => {
+    fs.readdirSync(directory).forEach((item) => {
       const itemPath = path.resolve(directory, item);
       const itemStat = fs.lstatSync(itemPath);
       if (itemStat.isSymbolicLink()) {
@@ -28,7 +28,7 @@ function getModuleMappings() {
         }
         const linkStat = fs.statSync(linkPath);
         if (linkStat.isDirectory()) {
-          const packagePath = path.resolve(linkPath, "package.json");
+          const packagePath = path.resolve(linkPath, 'package.json');
           if (fs.existsSync(packagePath)) {
             const packageId = path.relative(nodeModulesPath, itemPath);
             moduleMappings[packageId] = linkPath;
@@ -46,7 +46,7 @@ function getModuleMappings() {
 }
 
 const moduleMappings = getModuleMappings();
-console.log("Mapping the following sym linked packages:");
+console.log('Mapping the following sym linked packages:');
 console.log(moduleMappings);
 
 module.exports = {
@@ -62,13 +62,16 @@ module.exports = {
   resolver: {
     // Register an "extra modules proxy" for resolving modules outside of the normal resolution logic.
     extraNodeModules: new Proxy(
-        // Provide the set of known local package mappings.
-        moduleMappings,
-        {
-          // Provide a mapper function, which uses the above mappings for associated package ids,
-          // otherwise fall back to the standard behavior and just look in the node_modules directory.
-          get: (target, name) => name in target ? target[name] : path.join(__dirname, `node_modules/${name}`),
-        },
+      // Provide the set of known local package mappings.
+      moduleMappings,
+      {
+        // Provide a mapper function, which uses the above mappings for associated package ids,
+        // otherwise fall back to the standard behavior and just look in the node_modules directory.
+        get: (target, name) =>
+          name in target
+            ? target[name]
+            : path.join(__dirname, `node_modules/${name}`),
+      },
     ),
   },
 
