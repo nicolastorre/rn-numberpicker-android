@@ -11,7 +11,9 @@ echo no | $ANDROID_HOME/tools/bin/avdmanager --verbose create avd --force --name
 adb start-server
 
 $ANDROID_HOME/tools/bin/avdmanager list avd
+$ANDROID_HOME/emulator/emulator -avd Pixel_API_28 -no-window
 
+exit 0
 npx jetify
 npx detox build -c android.emu.release
 npx detox test -c android.emu.release --artifacts-location="e2e/__screenshots__" --take-screenshots="all" --headless
