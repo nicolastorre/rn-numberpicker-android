@@ -1,0 +1,13 @@
+name: Android
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run test
+        uses: docker://reactnativecommunity/react-native-android:latest
+        with:
+          entrypoint: ./example/e2e/run_e2e_tests.sh
