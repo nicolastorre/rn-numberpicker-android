@@ -2,6 +2,7 @@
 
 cd .. || exit 1
 
+ls . -all
 npm i -g envinfo detox-cli && envinfo
 npm install
 
