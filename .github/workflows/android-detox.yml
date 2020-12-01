@@ -3,11 +3,40 @@ name: Android
 on: [push]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: macos-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: example
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Run test
-        uses: docker://reactnativecommunity/react-native-android:latest
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Node
+        uses: actions/setup-node@v1
+
+      - name: Use specific Java version for sdkmanager to work
+        uses: joschi/setup-jdk@v1
         with:
-          entrypoint: ./example/e2e/run_e2e_tests.sh
+          java-version: 'openjdk8'
+          architecture: 'x64'
+
+      - name: Download Android Emulator Image
+        run: |
+          echo yes | $ANDROID_HOME/tools/bin/sdkmanager --channel=0 --verbose "system-images;android-28;default;x86_64"
+          echo no | $ANDROID_HOME/tools/bin/avdmanager --verbose create avd --force --name "Pixel_API_28" --package "system-images;android-28;default;x86_64" --sdcard 200M --device 11
+          $ANDROID_HOME/emulator/emulator -list-avds
+
+      - name: Install node_modules
+        run: |
+          npm install
+          npx jetify
+
+      - name: Build for detox
+        run: |
+          npx detox build -c android.emu.release
+
+      - name: Test Detox
+        run: npx detox test -c android.emu.release --artifacts-location="e2e/__screenshots__" --take-screenshots="all" --headless
