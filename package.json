@@ -1,6 +1,6 @@
 {
   "name": "rn-numberpicker-android",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Display a number picker for Android",
   "main": "index.js",
   "scripts": {
