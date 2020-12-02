@@ -4,7 +4,9 @@
 
 ![Test e2e](https://github.com/Merlier/rn-numberpicker-android/workflows/Test%20e2e/badge.svg?branch=main)
 
-<img src="./screenshots/screen_1.png" width="150">
+<div style="text-align:center">
+    <img src="./screenshots/screen_1.png" width="800">
+</div>
 
 ## Requirements
 
