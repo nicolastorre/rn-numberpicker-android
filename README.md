@@ -2,6 +2,14 @@
 
 > Display a number picker for Android
 
+![Test e2e](https://github.com/Merlier/rn-numberpicker-android/workflows/Test%20e2e/badge.svg?branch=main)
+
+<img src="./screenshots/screen_1.png" width="150">
+
+## Requirements
+
+* react-native >= 0.57.
+
 ## Install
 
 ```bash

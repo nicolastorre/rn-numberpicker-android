@@ -1,9 +1,13 @@
 name: Test e2e
 
-on: [push]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  build:
+  test:
     runs-on: macos-latest
     timeout-minutes: 15
     defaults:
