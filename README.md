@@ -5,7 +5,7 @@
 ![Test e2e](https://github.com/Merlier/rn-numberpicker-android/workflows/Test%20e2e/badge.svg?branch=main)
 
 <p align="center">
-    <img src="./screenshots/screen_1.png" width="300">
+    <img src="./screenshots/screen_1.png" width="200">
 </p>
 
 ## Requirements
