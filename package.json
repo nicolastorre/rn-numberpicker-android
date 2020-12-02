@@ -22,7 +22,6 @@
     "react": "^16.0",
     "react-native": ">=0.57 <=0.63"
   },
-  "private": true,
   "author": "Merlier",
   "license": "MIT",
   "devDependencies": {
